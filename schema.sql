@@ -1,32 +1,11 @@
-DROP DATABASE IF EXISTS employeeTrackerdb;
+DROP DATABASE IF EXISTS EatDaBurgerDb;
+CREATE DATABASE EatDaBurgerDb;
 
-CREATE DATABASE employeeTrackerdb;
+USE EatDaBurgerDb;
 
-USE employeeTrackerdb;-- use db!
-
-CREATE TABLE department (
-    id INT AUTO_INCREMENT NOT NULL,
-    name VARCHAR(30),
+CREATE TABLE burgers (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(10) NOT NULL,
+    devoured BOOLEAN,
     PRIMARY KEY (id)
 );
-
-CREATE TABLE job (
-    id INT AUTO_INCREMENT NOT NULL,
-    title VARCHAR(30),
-    salary INT,
-    department_id INT NOT NULL,
-    FOREIGN KEY (department_id)
-        REFERENCES department (id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE employee (
-    id INT AUTO_INCREMENT NOT NULL,
-    firstname VARCHAR(25) NOT NULL,
-    lastname VARCHAR(25) NOT NULL,
-    job_id INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (job_id)
-        REFERENCES job (id)
-);
-
